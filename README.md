@@ -8,3 +8,6 @@ To start:
 
 ```
 python3 miranda.py
+```  
+
+![](help.png)
