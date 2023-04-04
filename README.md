@@ -1,4 +1,4 @@
-# miranda.py UPnP Client Python3 compatible interactive script
+# miranda.py UPnP client - python3 compatible 
 
 Based on [https://github.com/issackelly/wemo/blob/master/miranda.py](https://github.com/issackelly/wemo/blob/master/miranda.py).
 
