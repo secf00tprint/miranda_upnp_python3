@@ -11,6 +11,7 @@
 # I have made minor modificatinos to get it to work with the wemo
 #
 ################################
+import socket
 
 try:
 	import sys,os
@@ -155,7 +156,13 @@ class upnp:
 		if socket == False:
 			socket = self.csock
 		try:
-			socket.sendto(data.encode(),(self.ip,self.port))
+			socket.sendto(data.encode('ASCII'),(self.ip,self.port))
+			socket.settimeout(3)
+			try:
+				data, addr = socket.recvfrom(1024)
+				return data.decode('ASCII')
+			except Exception as e:
+				return False
 			return True
 		except Exception as e:
 			print("SendTo method failed for %s:%d : %s" % (self.ip,self.port,e))
@@ -167,9 +174,10 @@ class upnp:
 			socket = self.ssock
 
 		try:
-			return socket.recv(size).decode()
-		except:
-			return False
+			data, addr = socket.recvfrom(size)
+			return data.decode('ASCII')
+		except Exception:
+			raise
 
 	#Create new UDP socket on ip, bound to port
 	def createNewListener(self,ip=gethostbyname(gethostname()),port=1900):
@@ -799,7 +807,10 @@ class upnp:
 def msearch(argc, argv, hp, cycles=99999999):
 	defaultST = "upnp:rootdevice"
 	st = "schemas-upnp-org"
-	myip = gethostbyname(gethostname())
+	s = socket(AF_INET, SOCK_DGRAM)
+	s.connect(("8.8.8.8",80))
+	myip = s.getsockname()[0]
+	s.close
 	lport = hp.port
 
 	if argc >= 3:
@@ -831,12 +842,12 @@ def msearch(argc, argv, hp, cycles=99999999):
 		print('Failed to bind port %d' % lport)
 		return
 
-	hp.send(request,server)
+	hp.send(request, server)
 	while True:
 		try:
 			hp.parseSSDPInfo(hp.listen(1024,server),False,False)
-		except Exception:
-			print('Discover mode halted...')
+		except Exception as e:
+			print('Discover mode halted...',e)
 			server.close()
 			break
 		cycles -= 1
