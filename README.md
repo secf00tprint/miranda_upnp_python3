@@ -482,12 +482,12 @@ Miranda has many other features, and is designed to be self-documenting; all of 
 # General Notes
 
 - Base64 Data Types
--- If an input value's data type is bin.base64, you may enter the data in plain text; Miranda will base64 encode the string before sending it to the UPnP host.
+    - If an input value's data type is bin.base64, you may enter the data in plain text; Miranda will base64 encode the string before sending it to the UPnP host.
         If an output value's data type is bin.base64, Miranda will base64 decode the data before displaying it to you.
 - Debug Mode
--- By default the debug mode is disabled; it can be enabled by issuing the 'set debug' command from the Miranda shell, or by specifying the -d option on the command line.
--- In debug mode, the SOAP requests sent during UPnP transactions will be displayed.
--- In debug mode, the debug command is also enabled; this command will eval() whatever you pass to it, which makes it useful for viewing the contents of data structures and the like.
+    - By default the debug mode is disabled; it can be enabled by issuing the 'set debug' command from the Miranda shell, or by specifying the -d option on the command line.
+    - In debug mode, the SOAP requests sent during UPnP transactions will be displayed.
+    - In debug mode, the debug command is also enabled; this command will eval() whatever you pass to it, which makes it useful for viewing the contents of data structures and the like.
 - Duplicate Host Entries
--- If you run the pcap/msearch commands long enough, they will see the same UPnP hosts re-broadcasting themselves on the network. By default, a host is only reported once, and duplicate discoveries of that host are ignored.
--- If you wish for duplicate discoveries to be reported, disable the unique host option using the 'set uniq' command from the Miranda shell, or by specifying the -u option on the command line.
+    - If you run the pcap/msearch commands long enough, they will see the same UPnP hosts re-broadcasting themselves on the network. By default, a host is only reported once, and duplicate discoveries of that host are ignored.
+    - If you wish for duplicate discoveries to be reported, disable the unique host option using the 'set uniq' command from the Miranda shell, or by specifying the -u option on the command line.
