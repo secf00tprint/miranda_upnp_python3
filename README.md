@@ -78,7 +78,7 @@ Many of the shell commands support various sub-commands. Miranda is designed to 
 
 While this tutorial will not cover every command and option available in Miranda, it will walk you through the basic usage and demonstrate the tool's major capabilities.
 
-# Discovering UPnP Hosts
+## Discovering UPnP Hosts
 
 Upon running Miranda, you will be greeted with a 'upnp>' prompt. You will likely wish to discover all UPnP hosts on your network first; this can be done with the msearch or pcap commands. The difference is that pcap will passively listen for SSDP notification messages sent out by UPnP hosts, while msearch will actively query the network for UPnP hosts. In this example, we will use the msearch command:
 
@@ -108,7 +108,7 @@ Likewise, if we only wanted to find hosts that support the WANIPConnection servi
 			upnp> msearch service WANIPConnection
 ```
 
-# Listing UPnP Hosts
+## Listing UPnP Hosts
 
 The 'host list' command will display all discovered hosts along with their host index number:
 
@@ -120,7 +120,7 @@ The 'host list' command will display all discovered hosts along with their host 
 
 Since the Linksys router was the first (and in this case, only) host discovered, it has a host index number of 0. This index number will be used to reference this particular host in subsequent commands.
 
-# Viewing Host Info, Part 1
+## Viewing Host Info, Part 1
 
 Before moving on, let's look at a few other host commands that we can run. At this point it is important to note that all of the 'host' commands feature full tab completion; if you're unsure of what options are available to you, or what values are in a particular piece of the host data structure, pressing TAB twice will show you.
 
@@ -163,7 +163,7 @@ There is also the 'host details' command that will display all devices, services
 			Can't show host info because I don't have it. Please run 'host get 0'
 ```
 
-# Getting Host Details
+## Getting Host Details
 
 We'll take the 'host details' suggestion and run the 'host get' command. This command will request and parse all device and service XML files that are advertised by the host, and place the extracted data into the host data structure so that we can view it using the previously mentioned host commands:
 
@@ -175,7 +175,7 @@ We'll take the 'host details' suggestion and run the 'host get' command. This co
 			Host data enumeration complete!
 ```
 
-# Viewing Host Info, Part 2
+## Viewing Host Info, Part 2
 
 Now, let's try running the 'host summary' command again and see what it reports:
 
@@ -224,7 +224,7 @@ Now, let's try running the 'host summary' command again and see what it reports:
 
 If we hadn't known that this was a Linksys device before, we do now! The router is actually advertising itself as three UPnP "devices": a WANConnectionDevice, a WANDevice, and an InternetGatewayDevice.
 
-# Saving Your Data
+## Saving Your Data
 
 You can also try re-running the 'host details 0' command; for clarity and brevity, the output will not be shown here as this command will spit out everything it knows about the host and its devices/services, which at this point is quite a bit. You will probably want to save this output to disk in order to view it more easily; this can be done with the 'save info' command:
 
@@ -254,7 +254,7 @@ This data can later be imported back into Miranda using the 'load' command:
 
 Because this data structure is saved using Python's pickle module, any other Python script can load the file for analysis using pickle.
 
-# Analyzing Host Information
+## Analyzing Host Information
 
 Let's now see if we can view the deviceList values with the 'host info' command that we tried earlier:
 
@@ -297,7 +297,7 @@ Each service also contains several sub-fields, but the one that we are most conc
 			GetNATRSIPStatus : {}
 ```
 
-# Sending UPnP Commands
+## Sending UPnP Commands
 
 Now that we know what devices, services, and actions exist, we can start sending UPnP commands to the Linksys router. We will try running the GetExternalIPAddress action that is supported by the WANIPConnection service offered by the WANConnectionDevice device. To send commands to a UPnP host, use the 'host send' command; you must specify the host index number, the device name, the service name, and the action name, in that order. If the action requires any input values, you will be prompted for them automatically, as well as being informed of those value's type, allowed use, and default values/ranges, if any. The GetExternalIPAddress does not require any input, so it runs immediately:
 
@@ -446,7 +446,7 @@ Again, no news is good news, and if we try to run GetSpecificPortMappingEntry af
 			SOAP error message: NoSuchEntryInArray
 ```
 
-# Scripting UPnP Commands
+## Scripting UPnP Commands
 
 Miranda supports a batch mode, which allows you to put Miranda commands into a file that will be run sequentially. The following batch file will:
 
@@ -475,18 +475,19 @@ The batch file can be loaded with the -b command line switch:
 			$ ./miranda.py -b batch.txt
 ```
 
-# Conclusion
+## Conclusion
 
 Miranda has many other features, and is designed to be self-documenting; all of the shell commands have their own help information that detail usage and sub-commands, and provide descriptions and examples. However, the above command set comprises 99% of what you will probably want to use Miranda for, and details the steps to discover and interact with UPnP devices on your network.
-General Notes
 
-    Base64 Data Types
-        If an input value's data type is bin.base64, you may enter the data in plain text; Miranda will base64 encode the string before sending it to the UPnP host.
+# General Notes
+
+- Base64 Data Types
+-- If an input value's data type is bin.base64, you may enter the data in plain text; Miranda will base64 encode the string before sending it to the UPnP host.
         If an output value's data type is bin.base64, Miranda will base64 decode the data before displaying it to you.
-    Debug Mode
-        By default the debug mode is disabled; it can be enabled by issuing the 'set debug' command from the Miranda shell, or by specifying the -d option on the command line.
-        In debug mode, the SOAP requests sent during UPnP transactions will be displayed.
-        In debug mode, the debug command is also enabled; this command will eval() whatever you pass to it, which makes it useful for viewing the contents of data structures and the like.
-    Duplicate Host Entries
-        If you run the pcap/msearch commands long enough, they will see the same UPnP hosts re-broadcasting themselves on the network. By default, a host is only reported once, and duplicate discoveries of that host are ignored.
-        If you wish for duplicate discoveries to be reported, disable the unique host option using the 'set uniq' command from the Miranda shell, or by specifying the -u option on the command line.
+- Debug Mode
+-- By default the debug mode is disabled; it can be enabled by issuing the 'set debug' command from the Miranda shell, or by specifying the -d option on the command line.
+-- In debug mode, the SOAP requests sent during UPnP transactions will be displayed.
+-- In debug mode, the debug command is also enabled; this command will eval() whatever you pass to it, which makes it useful for viewing the contents of data structures and the like.
+- Duplicate Host Entries
+-- If you run the pcap/msearch commands long enough, they will see the same UPnP hosts re-broadcasting themselves on the network. By default, a host is only reported once, and duplicate discoveries of that host are ignored.
+-- If you wish for duplicate discoveries to be reported, disable the unique host option using the 'set uniq' command from the Miranda shell, or by specifying the -u option on the command line.
