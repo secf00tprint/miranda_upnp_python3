@@ -450,11 +450,11 @@ Again, no news is good news, and if we try to run GetSpecificPortMappingEntry af
 
 Miranda supports a batch mode, which allows you to put Miranda commands into a file that will be run sequentially. The following batch file will:
 
-    Set the max host discovery limit to 1 host
-    Search for an Internet Gateway Device (IGD) on the network
-    Get the XML description files for the first IGD
-    Invoke the GetSpecificPortMappingEntry action
-    Exit Miranda
+- Set the max host discovery limit to 1 host
+- Search for an Internet Gateway Device (IGD) on the network
+- Get the XML description files for the first IGD
+- Invoke the GetSpecificPortMappingEntry action
+- Exit Miranda
 
 Note that the arguments to the GetSpecificPortMappingEntry are entered one per line in the batch file (including any blank lines), just as they would be if you were typing them interactively:
 
