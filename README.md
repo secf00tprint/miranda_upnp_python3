@@ -152,7 +152,7 @@ You can see that the dataComplete field is set to false, indicating that we have
 ```
 			upnp> host info 0 deviceList
 ```
-`
+
 Because we have not discovered what type of UPnP device the Linksys router is, this command will return no data at this time.
 
 There is also the 'host details' command that will display all devices, services, actions, arguments, etc, related to a particular host. Again, we have not discovered this information yet, and the 'host details' command tells us so:
