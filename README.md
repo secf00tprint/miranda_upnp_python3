@@ -446,7 +446,7 @@ Again, no news is good news, and if we try to run GetSpecificPortMappingEntry af
 			SOAP error message: NoSuchEntryInArray
 ```
 
-## Scripting UPnP Commands
+## Scripting UPnP Commands (currently not working)
 
 Miranda supports a batch mode, which allows you to put Miranda commands into a file that will be run sequentially. The following batch file will:
 
