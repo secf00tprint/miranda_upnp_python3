@@ -15,6 +15,7 @@ Features:
 - Ability to send actions to UPnP services/devices
 
 
+A nice description how to use it can be found here: [https://medium.com/purple-team/how-to-discover-universal-plug-and-play-upnp-hosts-using-miranda-fee1bbf30000](How to discover Universal Plug and Play (UPnP) hosts using Miranda)
 cf also [https://www.youtube.com/watch?v=rseMaljMcBY&t=21m15s](https://www.youtube.com/watch?v=rseMaljMcBY&t=21m15s).
 
 To start:
