@@ -490,4 +490,4 @@ Miranda has many other features, and is designed to be self-documenting; all of 
     - In debug mode, the debug command is also enabled; this command will eval() whatever you pass to it, which makes it useful for viewing the contents of data structures and the like.
 - Duplicate Host Entries
     - If you run the pcap/msearch commands long enough, they will see the same UPnP hosts re-broadcasting themselves on the network. By default, a host is only reported once, and duplicate discoveries of that host are ignored.
-    - If you wish for duplicate discoveries to be reported, disable the unique host option using the 'set uniq' command from the Miranda shell, or by specifying the -u option on the command line.
+    - If you wish for unique discoveries to be reported, enable the unique host option using the 'set uniq' command from the Miranda shell, or by specifying the -u option on the command line. This could xml files not be found which are at the same IP. 
