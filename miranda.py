@@ -875,7 +875,7 @@ def msearch(argc, argv, hp, cycles=99999999):
 			request += header + ':' + value + "\r\n"
 	request += "\r\n"
 
-	print("Entering discovery mode for '%s', Ctl+C to stop..." % st)
+	print("Entering discovery mode for '%s', Ctrl+C to stop..." % st)
 	print('')
 
 	#Have to create a new socket since replies will be sent directly to our IP, not the multicast IP
@@ -905,7 +905,7 @@ def msearch(argc, argv, hp, cycles=99999999):
 
 #Passively listen for UPNP NOTIFY packets
 def pcap(argc,argv,hp):
-	print('Entering passive mode, Ctl+C to stop...')
+	print('Entering passive mode, Ctrl+C to stop...')
 	print('')
 
 	count = 0
@@ -1780,7 +1780,7 @@ def main(argc,argv):
 	readline.set_completer(hp.completer.complete)
 
 	#Set some default values
-	hp.UNIQ = True
+	hp.UNIQ = False
 	hp.VERBOSE = False
 	action = False
 	funPtr = False
